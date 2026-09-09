@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yangkaibrowser.legacy"
-    android:versionCode="2"
-    android:versionName="1.0.1">
+    android:versionCode="4"
+    android:versionName="1.0.3">
 
-    <!-- Minimum Android 4.4.4 KitKat (API 19) Target -->
+    <!-- Universal API 14+ minimum SDK (KitKat 4.4.4 is API 19) -->
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <!-- Minimum required permissions strictly justified -->
@@ -14,12 +14,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!-- TV hardware declarations: Touchscreen not required, Leanback compatible -->
+    <!-- TV hardware declarations: Touchscreen not required -->
     <uses-feature
         android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <uses-feature
-        android:name="android.software.leanback"
         android:required="false" />
 
     <application
@@ -30,18 +27,19 @@
         android:label="@string/app_name"
         android:theme="@style/YangKaiDarkTheme">
 
-        <!-- Main Single Activity - Landscape TV First -->
+        <!-- Main Single Activity - Landscape TV & Remote Control First -->
         <activity
             android:name="com.yangkaibrowser.legacy.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:screenOrientation="landscape"
             android:launchMode="singleTask"
             android:exported="true">
+            <!-- Standard Android Launcher Intent Filter (Universally supported by all Android 4.4.4 Launchers) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
+            <!-- Web Browser URL View Handler -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

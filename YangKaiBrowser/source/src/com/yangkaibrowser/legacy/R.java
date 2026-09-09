@@ -60,13 +60,15 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int app_tagline=0x7f050001;
         public static final int btn_back=0x7f050003;
-        public static final int btn_cursor=0x7f050009;
+        public static final int btn_cursor=0x7f05000a;
         public static final int btn_forward=0x7f050004;
-        public static final int btn_home=0x7f050006;
-        public static final int btn_menu=0x7f050008;
+        public static final int btn_home=0x7f050007;
+        public static final int btn_menu=0x7f050009;
         public static final int btn_reload=0x7f050005;
-        public static final int btn_tabs=0x7f050007;
+        public static final int btn_stop=0x7f050006;
+        public static final int btn_tabs=0x7f050008;
         public static final int dialog_title_bookmarks=0x7f050017;
+        public static final int dialog_title_clear_data=0x7f050019;
         public static final int dialog_title_diagnostics=0x7f050018;
         public static final int dialog_title_history=0x7f050016;
         public static final int dialog_title_settings=0x7f050014;
@@ -78,10 +80,37 @@ public final class R {
         public static final int nav_settings=0x7f050012;
         public static final int quick_archive=0x7f05000d;
         public static final int quick_news=0x7f05000e;
-        public static final int quick_search=0x7f05000a;
+        public static final int quick_search=0x7f05000b;
         public static final int quick_wiki=0x7f05000c;
-        public static final int quick_youtube=0x7f05000b;
         public static final int search_hint=0x7f050002;
+        public static final int str_back=0x7f050021;
+        public static final int str_bookmarks=0x7f05001c;
+        public static final int str_cancel=0x7f050032;
+        public static final int str_clear=0x7f050030;
+        public static final int str_close=0x7f05002d;
+        public static final int str_delete=0x7f05002f;
+        public static final int str_diagnostics=0x7f050020;
+        public static final int str_download=0x7f050026;
+        public static final int str_download_complete=0x7f050027;
+        public static final int str_download_failed=0x7f050028;
+        public static final int str_downloads=0x7f05001e;
+        public static final int str_forward=0x7f050022;
+        public static final int str_history=0x7f05001d;
+        /**  Standard Action & Status Strings 
+ Standard Action & Status Strings in Natural Arabic 
+         */
+        public static final int str_home=0x7f05001a;
+        public static final int str_memory=0x7f05002a;
+        public static final int str_network_error=0x7f050029;
+        public static final int str_open=0x7f05002e;
+        public static final int str_reload=0x7f050023;
+        public static final int str_retry=0x7f050025;
+        public static final int str_save=0x7f050031;
+        public static final int str_search=0x7f05001b;
+        public static final int str_settings=0x7f05001f;
+        public static final int str_stop=0x7f050024;
+        public static final int str_storage=0x7f05002b;
+        public static final int str_tabs=0x7f05002c;
     }
     public static final class style {
         public static final int YangKaiDarkTheme=0x7f060000;

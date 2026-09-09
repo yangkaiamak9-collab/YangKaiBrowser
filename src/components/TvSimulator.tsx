@@ -17,7 +17,8 @@ import {
   Tv,
   ExternalLink,
   ShieldCheck,
-  Search
+  Search,
+  Square
 } from 'lucide-react';
 import type { TabItem, MemoryState, KeyLog } from '../types';
 
@@ -72,7 +73,7 @@ export const TvSimulator: React.FC<TvSimulatorProps> = ({ onDownloadApk }) => {
 
   // History & Bookmarks stored locally
   const [bookmarks, setBookmarks] = useState<{ title: string; url: string }[]>([
-    { title: 'DuckDuckGo Lite', url: 'https://html.duckduckgo.com/html/' },
+    { title: 'Bing Search', url: 'https://www.bing.com' },
     { title: 'Wikipedia Mobile', url: 'https://en.m.wikipedia.org' },
     { title: 'Internet Archive', url: 'https://archive.org' }
   ]);
@@ -104,7 +105,7 @@ export const TvSimulator: React.FC<TvSimulatorProps> = ({ onDownloadApk }) => {
       if (resolved.includes('.') && !resolved.includes(' ')) {
         resolved = 'https://' + resolved;
       } else {
-        resolved = 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(resolved);
+        resolved = 'https://www.bing.com/search?q=' + encodeURIComponent(resolved);
       }
     }
 
@@ -119,7 +120,7 @@ export const TvSimulator: React.FC<TvSimulatorProps> = ({ onDownloadApk }) => {
         setProgress(100);
         setTimeout(() => setProgress(0), 200);
 
-        const pageTitle = title || (resolved.includes('duckduckgo') ? 'Search Results' : resolved.replace(/^https?:\/\//, ''));
+        const pageTitle = title || (resolved.includes('bing') ? 'Bing Search' : resolved.replace(/^https?:\/\//, ''));
 
         setTabs(prev => {
           const updated = [...prev];
@@ -303,8 +304,8 @@ export const TvSimulator: React.FC<TvSimulatorProps> = ({ onDownloadApk }) => {
       // In webview body
       if (currentTab.url === 'file:///android_asset/homepage.html') {
         if (y > 140 && y < 220) {
-          if (x > 40 && x < 170) navigateTo('https://html.duckduckgo.com/html/', 'DuckDuckGo Lite');
-          else if (x > 180 && x < 310) navigateTo('https://m.youtube.com', 'YouTube Mobile');
+          if (x > 40 && x < 170) navigateTo('https://www.bing.com', 'Bing Search');
+          else if (x > 180 && x < 310) navigateTo('https://en.m.wikipedia.org', 'Wikipedia Mobile');
           else if (x > 320 && x < 450) navigateTo('https://en.m.wikipedia.org', 'Wikipedia');
           else if (x > 460 && x < 590) navigateTo('https://archive.org', 'Internet Archive');
           else if (x > 600 && x < 730) navigateTo('https://news.ycombinator.com', 'Hacker News');
@@ -401,14 +402,26 @@ export const TvSimulator: React.FC<TvSimulatorProps> = ({ onDownloadApk }) => {
 
               <button
                 id="tv_btn_reload"
-                onClick={() => navigateTo(currentTab.url)}
+                onClick={() => {
+                  if (isLoading) {
+                    setIsLoading(false);
+                    setProgress(0);
+                  } else {
+                    navigateTo(currentTab.url);
+                  }
+                }}
+                title={isLoading ? 'Stop loading' : 'Reload page'}
                 className={`h-8 w-8 rounded text-xs font-semibold flex items-center justify-center transition-all ${
                   focusedToolbarIndex === 2
                     ? 'bg-[#2D2D38] border-2 border-[#FFD54F] text-[#FFD54F] scale-105'
                     : 'bg-[#24242A] text-[#E5A93C] border border-[#3A3A44] hover:bg-[#2F2F38]'
                 }`}
               >
-                <RotateCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
+                {isLoading ? (
+                  <Square className="w-3.5 h-3.5 fill-current text-rose-400" />
+                ) : (
+                  <RotateCw className="w-3.5 h-3.5" />
+                )}
               </button>
 
               <button
@@ -537,25 +550,16 @@ export const TvSimulator: React.FC<TvSimulatorProps> = ({ onDownloadApk }) => {
                   {/* Section: Web Portals */}
                   <div className="text-left mb-4">
                     <h2 className="text-xs font-bold text-[#E5A93C] uppercase tracking-wider pb-1 border-b border-[#282834] mb-3">
-                      ⚡ Quick Access Web Portals
+                      ⚡ Quick Access Web Portals (No YouTube Shortcut)
                     </h2>
-                    <div className="grid grid-cols-5 gap-2">
+                    <div className="grid grid-cols-4 gap-2">
                       <button
-                        onClick={() => navigateTo('https://html.duckduckgo.com/html/', 'DuckDuckGo Lite')}
+                        onClick={() => navigateTo('https://www.bing.com', 'Bing Search')}
                         className="p-3 bg-[#1C1C24] hover:bg-[#282834] border border-[#2D2D3A] hover:border-[#FFD54F] rounded-lg text-center transition-all group"
                       >
-                        <Search className="w-5 h-5 mx-auto mb-1 text-amber-400 group-hover:scale-110 transition-transform" />
-                        <span className="text-[11px] font-bold block text-gray-200">DuckDuckGo</span>
-                        <span className="text-[9px] text-gray-500">Lite Engine</span>
-                      </button>
-
-                      <button
-                        onClick={() => navigateTo('https://m.youtube.com', 'YouTube Mobile')}
-                        className="p-3 bg-[#1C1C24] hover:bg-[#282834] border border-[#2D2D3A] hover:border-[#FFD54F] rounded-lg text-center transition-all group"
-                      >
-                        <Tv className="w-5 h-5 mx-auto mb-1 text-red-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-[11px] font-bold block text-gray-200">YouTube</span>
-                        <span className="text-[9px] text-gray-500">Mobile Web</span>
+                        <Search className="w-5 h-5 mx-auto mb-1 text-[#00809D] group-hover:scale-110 transition-transform" />
+                        <span className="text-[11px] font-bold block text-gray-200">Bing Search</span>
+                        <span className="text-[9px] text-gray-500">Default Engine</span>
                       </button>
 
                       <button

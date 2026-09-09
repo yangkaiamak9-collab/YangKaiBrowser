@@ -26,4 +26,31 @@
     <string name="dialog_title_bookmarks">الإشارات المرجعية المحفوظة</string>
     <string name="dialog_title_diagnostics">تشخيص عتاد شاشة التلفاز</string>
     <string name="dialog_title_clear_data">مسح بيانات التصفح</string>
+
+    <!-- Standard Action & Status Strings in Natural Arabic -->
+    <string name="str_home">الرئيسية</string>
+    <string name="str_search">بحث</string>
+    <string name="str_bookmarks">الإشارات المرجعية</string>
+    <string name="str_history">سجل التصفح</string>
+    <string name="str_downloads">التنزيلات</string>
+    <string name="str_settings">الإعدادات</string>
+    <string name="str_diagnostics">فحص العتاد</string>
+    <string name="str_back">رجوع</string>
+    <string name="str_forward">تقديم</string>
+    <string name="str_reload">إعادة تحميل</string>
+    <string name="str_stop">إيقاف</string>
+    <string name="str_retry">إعادة المحاولة</string>
+    <string name="str_download">تنزيل</string>
+    <string name="str_download_complete">اكتمل التنزيل</string>
+    <string name="str_download_failed">فشل التنزيل</string>
+    <string name="str_network_error">خطأ في الشبكة</string>
+    <string name="str_memory">الذاكرة</string>
+    <string name="str_storage">التخزين</string>
+    <string name="str_tabs">التبويبات</string>
+    <string name="str_close">إغلاق</string>
+    <string name="str_open">فتح</string>
+    <string name="str_delete">حذف</string>
+    <string name="str_clear">مسح</string>
+    <string name="str_save">حفظ</string>
+    <string name="str_cancel">إلغاء</string>
 </resources>

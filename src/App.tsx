@@ -49,7 +49,7 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-black tracking-wider text-white">YANG KAI BROWSER</h1>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#E5A93C] text-[#121214]">
-                  v1.0.0
+                  v1.0.3
                 </span>
               </div>
               <p className="text-xs text-gray-400">
@@ -67,7 +67,7 @@ export default function App() {
               title="تحميل ملف الـ APK مباشرة لجهازك"
             >
               <Download className="w-4 h-4" />
-              تحميل الـ APK الآن (58.5 KB)
+              تحميل الـ APK الآن (62.6 KB)
             </button>
             <button
               id="top_download_zip_btn"

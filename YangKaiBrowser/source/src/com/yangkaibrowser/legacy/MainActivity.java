@@ -76,6 +76,7 @@ public class MainActivity extends Activity implements
     private TextView tvModeStatus;
 
     private AlertDialog currentDialog;
+    private boolean isCurrentlyLoading = false;
     private final Handler memUpdateHandler = new Handler();
     private Runnable memUpdateRunnable;
 
@@ -169,7 +170,11 @@ public class MainActivity extends Activity implements
             public void onClick(View v) {
                 BrowserEngine engine = browserController.getActiveEngine();
                 if (engine != null) {
-                    engine.reload();
+                    if (isCurrentlyLoading) {
+                        engine.stopLoading();
+                    } else {
+                        engine.reload();
+                    }
                 }
             }
         });
@@ -388,7 +393,11 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onLoadingStateChanged(boolean isLoading) {
+        this.isCurrentlyLoading = isLoading;
         progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        if (btnReload != null) {
+            btnReload.setText(isLoading ? getString(R.string.btn_stop) : getString(R.string.btn_reload));
+        }
         if (!isLoading) {
             updateMemoryStatus();
         }
@@ -810,17 +819,17 @@ public class MainActivity extends Activity implements
         final String[] options = new String[]{
                 "JavaScript: " + (settingsManager.isJavaScriptEnabled() ? "ENABLED" : "DISABLED"),
                 "Images: " + (settingsManager.isImagesEnabled() ? "ENABLED" : "DISABLED"),
-                "Search Engine: DuckDuckGo Lite",
+                "Search Engine: Bing (Default)",
                 "User Agent Mode: " + getUserAgentName(settingsManager.getUserAgentMode()),
                 "Cursor Speed: " + settingsManager.getCursorSpeed() + " px/step",
                 "Performance Mode: " + (settingsManager.isPerformanceMode() ? "ACTIVE (512MB)" : "OFF"),
                 "🧹 Clear Web Cache Only",
                 "🍪 Clear Cookies Only",
-                "⚠️ Clear All Temporary Data"
+                "⚠️ " + getString(R.string.dialog_title_clear_data)
         };
 
         currentDialog = new AlertDialog.Builder(this)
-                .setTitle("⚙️ Browser Settings")
+                .setTitle(getString(R.string.dialog_title_settings))
                 .setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -842,7 +851,7 @@ public class MainActivity extends Activity implements
                                 Toast.makeText(MainActivity.this, "Images: " + (nextImg ? "ON" : "OFF"), Toast.LENGTH_SHORT).show();
                                 break;
                             case 2:
-                                Toast.makeText(MainActivity.this, "Engine set to DuckDuckGo Lite", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Default Search: Bing (https://www.bing.com)", Toast.LENGTH_SHORT).show();
                                 break;
                             case 3:
                                 int nextMode = (settingsManager.getUserAgentMode() + 1) % 3;
@@ -874,12 +883,26 @@ public class MainActivity extends Activity implements
                                 Toast.makeText(MainActivity.this, "Cookies cleared", Toast.LENGTH_SHORT).show();
                                 break;
                             case 8:
-                                clearAllCacheWithFeedback();
+                                confirmClearBrowsingData();
                                 break;
                         }
                     }
                 })
-                .setNegativeButton("Done", null)
+                .setNegativeButton(getString(R.string.str_close), null)
+                .show();
+    }
+
+    private void confirmClearBrowsingData() {
+        currentDialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.dialog_title_clear_data)
+                .setMessage("Are you sure you want to clear browsing history, web cache, and cookies?\\n\\nهل تريد حقاً مسح سجل التصفح وذاكرة التخزين المؤقت وملفات تعريف الارتباط؟")
+                .setPositiveButton(getString(R.string.str_clear), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        clearAllCacheWithFeedback();
+                    }
+                })
+                .setNegativeButton(getString(R.string.str_cancel), null)
                 .show();
     }
 
@@ -930,17 +953,18 @@ public class MainActivity extends Activity implements
 
     private void showAboutDialog() {
         currentDialog = new AlertDialog.Builder(this)
-                .setTitle("🐉 Yang Kai Browser")
-                .setMessage("Version: 1.0.0 (Hardened Build 2026)\\n" +
+                .setTitle("🐉 " + getString(R.string.app_name))
+                .setMessage("Version: 1.0.1 (Hardened Build 2026)\\n" +
                         "Target: Android 4.4.4 KitKat (API 19)\\n" +
                         "Hardware Profile: ARM32 / Cortex-A7 / 512MB RAM TV\\n" +
                         "Architecture: Single Live WebView Engine\\n" +
-                        "Package: com.yangkaibrowser.legacy\\n\\n" +
+                        "Package: com.yangkaibrowser.legacy\\n" +
+                        "Default Search: Bing (UTF-8 Arabic Search)\\n\\n" +
                         "Features:\\n" +
                         "• Strict memory-safe Tab Management (1 Live WebView)\\n" +
-                        "• Streaming 8KB chunk Download System\\n" +
+                        "• Streaming 8KB chunk Download System (.tmp -> atomic rename)\\n" +
                         "• Dual-mode D-Pad & Virtual Cursor Navigation\\n" +
-                        "• Secure Local JavaScript Bridge\\n" +
+                        "• Secure Local JavaScript Bridge (file:///android_asset/ only)\\n" +
                         "• Real-time Physical RAM & Heap Diagnostics\\n" +
                         "• Zero Cloud Telemetry & Zero Analytics")
                 .setPositiveButton("OK", null)
