@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yang Kai Browser - متصفح يانغ كاي</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background-color: #121214;
+    color: #F0F0F2;
+    font-family: sans-serif;
+    padding: 20px 28px;
+    user-select: none;
+    direction: inherit;
+}
+.header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.dragon-badge {
+    color: #E5A93C;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.subtitle {
+    color: #A0A0A8;
+    font-size: 13px;
+    margin-top: 4px;
+}
+.specs {
+    display: inline-block;
+    background: #1E1E24;
+    border: 1px solid #3A3A44;
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #E5A93C;
+}
+.section-title {
+    color: #E5A93C;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #282830;
+    padding-bottom: 6px;
+}
+.grid {
+    display: table;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.row {
+    display: table-row;
+}
+.tile {
+    display: table-cell;
+    width: 20%;
+    padding: 5px;
+}
+.tile-btn {
+    display: block;
+    background: #1C1C22;
+    border: 2px solid #2A2A34;
+    border-radius: 6px;
+    padding: 10px 6px;
+    text-decoration: none;
+    color: #F0F0F2;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tile-btn:focus, .tile-btn:hover {
+    background: #2D2D38;
+    border-color: #FFD54F;
+    color: #FFD54F;
+    outline: none;
+}
+.icon {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 4px;
+}
+.tile-sub {
+    font-size: 10px;
+    color: #90909A;
+    display: block;
+    margin-top: 2px;
+    font-weight: normal;
+}
+.footer-note {
+    text-align: center;
+    color: #666672;
+    font-size: 11px;
+    margin-top: 14px;
+}
+</style>
+<script>
+function triggerAction(action) {
+    try {
+        if (window.yangkai && typeof window.yangkai[action] === 'function') {
+            window.yangkai[action]();
+        } else {
+            console.log("Native bridge not available for: " + action);
+        }
+    } catch(e) {
+        console.error(e);
+    }
+}
+</script>
+</head>
+<body>
+<div class="header">
+    <div class="dragon-badge">🐉 YANG KAI BROWSER • متصفح يانغ كاي</div>
+    <div class="subtitle">متصفح أندرويد 4.4 خفيف ومستقل لشاشات التلفاز • Autonomous Legacy TV Browser</div>
+    <div class="specs">Android 4.4.4 KitKat • API 19 • 512MB RAM • D-Pad Remote Ready</div>
+</div>
+
+<div class="section-title">⚡ Quick Access Web Portals • بوابات الويب السريعة</div>
+<div class="grid">
+    <div class="row">
+        <div class="tile" style="width: 25%;">
+            <a class="tile-btn" href="https://www.bing.com">
+                <span class="icon">🔍</span>Bing Search
+                <span class="tile-sub">بحث بينغ الافتراضي</span>
+            </a>
+        </div>
+        <div class="tile" style="width: 25%;">
+            <a class="tile-btn" href="https://ar.m.wikipedia.org">
+                <span class="icon">📖</span>Wikipedia
+                <span class="tile-sub">الموسوعة الحرة</span>
+            </a>
+        </div>
+        <div class="tile" style="width: 25%;">
+            <a class="tile-btn" href="https://archive.org">
+                <span class="icon">🏛️</span>Archive.org
+                <span class="tile-sub">أرشيف الإنترنت</span>
+            </a>
+        </div>
+        <div class="tile" style="width: 25%;">
+            <a class="tile-btn" href="https://news.ycombinator.com">
+                <span class="icon">📰</span>Hacker News
+                <span class="tile-sub">أخبار تقنية سريعة</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="section-title">🛠️ Local TV Utilities • أدوات النظام وشاشة التلفاز</div>
+<div class="grid">
+    <div class="row">
+        <div class="tile">
+            <a class="tile-btn" href="javascript:void(0)" onclick="triggerAction('openBookmarks')">
+                <span class="icon">⭐</span>Bookmarks
+                <span class="tile-sub">الإشارات المرجعية</span>
+            </a>
+        </div>
+        <div class="tile">
+            <a class="tile-btn" href="javascript:void(0)" onclick="triggerAction('openHistory')">
+                <span class="icon">🕒</span>History
+                <span class="tile-sub">سجل التصفح</span>
+            </a>
+        </div>
+        <div class="tile">
+            <a class="tile-btn" href="javascript:void(0)" onclick="triggerAction('openDownloads')">
+                <span class="icon">📥</span>Downloads
+                <span class="tile-sub">إدارة التنزيلات</span>
+            </a>
+        </div>
+        <div class="tile">
+            <a class="tile-btn" href="file:///android_asset/diagnostics.html">
+                <span class="icon">🩺</span>Diagnostics
+                <span class="tile-sub">فحص العتاد والذاكرة</span>
+            </a>
+        </div>
+        <div class="tile">
+            <a class="tile-btn" href="javascript:void(0)" onclick="triggerAction('openSettings')">
+                <span class="icon">⚙️</span>Settings
+                <span class="tile-sub">إعدادات المتصفح</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="footer-note">
+    D-Pad Friendly • Single Live WebView Architecture • Zero Analytics • Preserves 512MB RAM
+</div>
+</body>
+</html>

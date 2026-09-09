@@ -1,0 +1,2 @@
+e253942c057930244765fe6fc407abbbbab817999f6cc6283b66d3a6492ae73f  YangKaiBrowser/apk/YangKaiBrowser-release.apk
+c5bc9909194dbecabc36f59f50bf3a054c0f7e01c03426d01fde0375c8fe6858  YangKaiBrowser/apk/YangKaiBrowser-debug.apk

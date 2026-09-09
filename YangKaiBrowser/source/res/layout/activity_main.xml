@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yk_black">
+
+    <!-- Top Navigation Toolbar (TV D-Pad friendly) -->
+    <LinearLayout
+        android:id="@+id/top_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/yk_dark_surface"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="@string/btn_back"
+            android:textSize="13sp"
+            android:textColor="@color/yk_white"
+            android:background="@drawable/btn_selector"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_forward"
+            android:nextFocusDown="@+id/url_input" />
+
+        <Button
+            android:id="@+id/btn_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_forward"
+            android:textSize="13sp"
+            android:textColor="@color/yk_white"
+            android:background="@drawable/btn_selector"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_reload"
+            android:nextFocusDown="@+id/url_input" />
+
+        <Button
+            android:id="@+id/btn_reload"
+            android:layout_width="44dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_reload"
+            android:textSize="16sp"
+            android:textColor="@color/yk_gold"
+            android:background="@drawable/btn_selector"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_home"
+            android:nextFocusDown="@+id/url_input" />
+
+        <Button
+            android:id="@+id/btn_home"
+            android:layout_width="44dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_home"
+            android:textSize="16sp"
+            android:textColor="@color/yk_gold"
+            android:background="@drawable/btn_selector"
+            android:focusable="true"
+            android:nextFocusRight="@+id/url_input"
+            android:nextFocusDown="@+id/url_input" />
+
+        <!-- Address / Search Bar -->
+        <EditText
+            android:id="@+id/url_input"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:hint="@string/search_hint"
+            android:textColorHint="@color/yk_gray_text"
+            android:textColor="@color/yk_white"
+            android:background="@drawable/edittext_selector"
+            android:textSize="13sp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:singleLine="true"
+            android:imeOptions="actionGo"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_go" />
+
+        <Button
+            android:id="@+id/btn_go"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="Go"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/yk_black"
+            android:background="@drawable/btn_selector"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_tabs" />
+
+        <Button
+            android:id="@+id/btn_tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_tabs"
+            android:textSize="13sp"
+            android:textColor="@color/yk_gold"
+            android:background="@drawable/btn_selector"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_downloads" />
+
+        <Button
+            android:id="@+id/btn_downloads"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="📥 DL"
+            android:textSize="13sp"
+            android:textColor="@color/yk_white"
+            android:background="@drawable/btn_selector"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_cursor_toggle" />
+
+        <Button
+            android:id="@+id/btn_cursor_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_cursor"
+            android:textSize="13sp"
+            android:textColor="@color/yk_white"
+            android:background="@drawable/btn_selector"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btn_menu" />
+
+        <Button
+            android:id="@+id/btn_menu"
+            android:layout_width="44dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:text="@string/btn_menu"
+            android:textSize="16sp"
+            android:textColor="@color/yk_white"
+            android:background="@drawable/btn_selector"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Progress indicator bar -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/top_toolbar"
+        android:visibility="gone"
+        android:max="100" />
+
+    <!-- Web Content Container -->
+    <FrameLayout
+        android:id="@+id/webview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/progress_bar"
+        android:layout_above="@+id/status_bar"
+        android:background="@color/yk_black" />
+
+    <!-- Virtual Cursor View (Overlay for TV Remote D-Pad pointing) -->
+    <ImageView
+        android:id="@+id/virtual_cursor"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_cursor_pointer"
+        android:visibility="gone" />
+
+    <!-- Bottom Mini Status Bar: RAM & Status Diagnostics -->
+    <LinearLayout
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yk_dark_surface"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐉 Yang Kai [API 19 / 512MB RAM TV]"
+            android:textColor="@color/yk_gold"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_mem_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="RAM: Initializing..."
+            android:textColor="@color/yk_gray_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_mode_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="MODE: DPAD FOCUS"
+            android:textColor="@color/yk_gold_bright"
+            android:textSize="11sp" />
+    </LinearLayout>
+</RelativeLayout>

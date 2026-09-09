@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">متصفح يانغ كاي</string>
+    <string name="app_tagline">متصفح تلفاز أندرويد 4.4 خفيف ومستقل</string>
+    <string name="search_hint">أدخل الرابط أو ابحث هنا...</string>
+    <string name="btn_back">◀ رجوع</string>
+    <string name="btn_forward">تقديم ▶</string>
+    <string name="btn_reload">⟳</string>
+    <string name="btn_stop">✕</string>
+    <string name="btn_home">🏠</string>
+    <string name="btn_tabs">التبويبات</string>
+    <string name="btn_menu">☰</string>
+    <string name="btn_cursor">🎯 المؤشر</string>
+    <string name="quick_search">بحث Bing</string>
+    <string name="quick_wiki">ويكيبيديا</string>
+    <string name="quick_archive">أرشيف الإنترنت</string>
+    <string name="quick_news">أخبار خفيفة</string>
+    <string name="nav_history">سجل التصفح</string>
+    <string name="nav_bookmarks">الإشارات المرجعية</string>
+    <string name="nav_downloads">التنزيلات</string>
+    <string name="nav_settings">الإعدادات</string>
+    <string name="nav_diagnostics">فحص العتاد</string>
+    <string name="dialog_title_settings">إعدادات متصفح يانغ كاي (1.0.1)</string>
+    <string name="dialog_title_tabs">إدارة التبويبات (بحد أقصى 3)</string>
+    <string name="dialog_title_history">سجل التصفح (بحد أقصى 300)</string>
+    <string name="dialog_title_bookmarks">الإشارات المرجعية المحفوظة</string>
+    <string name="dialog_title_diagnostics">تشخيص عتاد شاشة التلفاز</string>
+    <string name="dialog_title_clear_data">مسح بيانات التصفح</string>
+</resources>

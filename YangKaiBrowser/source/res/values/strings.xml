@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yang Kai Browser</string>
+    <string name="app_tagline">Autonomous Legacy TV Browser</string>
+    <string name="search_hint">Enter URL or Search Query...</string>
+    <string name="btn_back">◀ Back</string>
+    <string name="btn_forward">Forward ▶</string>
+    <string name="btn_reload">⟳</string>
+    <string name="btn_stop">✕</string>
+    <string name="btn_home">🏠</string>
+    <string name="btn_tabs">Tabs (1)</string>
+    <string name="btn_menu">☰</string>
+    <string name="btn_cursor">🎯 Pointer</string>
+    <string name="quick_search">Bing Search</string>
+    <string name="quick_wiki">Wikipedia</string>
+    <string name="quick_archive">Archive.org</string>
+    <string name="quick_news">Lite News</string>
+    <string name="nav_history">History</string>
+    <string name="nav_bookmarks">Bookmarks</string>
+    <string name="nav_downloads">Downloads</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_diagnostics">Diagnostics</string>
+    <string name="dialog_title_settings">Yang Kai Browser Settings (1.0.1)</string>
+    <string name="dialog_title_tabs">Tab Manager (Max 3)</string>
+    <string name="dialog_title_history">Browsing History (Max 300)</string>
+    <string name="dialog_title_bookmarks">Bookmarks</string>
+    <string name="dialog_title_diagnostics">Legacy TV Hardware Diagnostics</string>
+    <string name="dialog_title_clear_data">Clear Browsing Data</string>
+</resources>

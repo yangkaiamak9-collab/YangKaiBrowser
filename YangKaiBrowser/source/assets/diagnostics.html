@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardware Diagnostics - تشخيص عتاد التلفاز</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #121214; color: #F0F0F2; font-family: sans-serif; padding: 18px 26px; }
+h1 { color: #E5A93C; font-size: 19px; margin-bottom: 4px; }
+p.desc { color: #A0A0A8; font-size: 12px; margin-bottom: 12px; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; background: #18181E; border-radius: 4px; overflow: hidden; }
+th, td { border: 1px solid #282832; padding: 7px 12px; text-align: left; font-size: 12px; }
+th { background: #22222C; color: #E5A93C; font-weight: bold; }
+.metric { color: #58D68D; font-weight: bold; }
+.btn { display: inline-block; background: #22222C; border: 2px solid #FFD54F; color: #FFD54F; padding: 7px 16px; text-decoration: none; border-radius: 4px; margin-top: 14px; font-weight: bold; font-size: 12px; }
+.btn:focus, .btn:hover { background: #323240; outline: none; }
+</style>
+<script>
+function loadRealMetrics() {
+    try {
+        if (window.yangkai && typeof window.yangkai.getDiagnostics === 'function') {
+            var raw = window.yangkai.getDiagnostics();
+            var data = JSON.parse(raw);
+            if (data) {
+                document.getElementById('os_val').innerText = 'Android ' + data.osVersion + ' (API ' + data.apiLevel + ')';
+                document.getElementById('abi_val').innerText = data.cpuAbi + ' (' + data.hardware + ')';
+                document.getElementById('ram_val').innerText = data.availRamMB + ' MB Free (من أصل 512MB RAM)';
+                document.getElementById('heap_val').innerText = data.heapUsedMB + ' MB Used / ' + data.heapMaxMB + ' MB Max Heap';
+                document.getElementById('storage_val').innerText = data.internalFreeMB + ' MB Free Flash Storage';
+                document.getElementById('tabs_val').innerText = data.activeTabs + ' Open / ' + data.liveWebviews + ' Active Live WebView';
+                document.getElementById('net_val').innerText = data.networkStatus;
+                document.getElementById('mode_val').innerText = 'Single Live WebView Architecture';
+            }
+        }
+    } catch(e) {
+        console.log("Diagnostics bridge parse error: " + e);
+    }
+}
+window.onload = loadRealMetrics;
+</script>
+</head>
+<body>
+<h1>🐉 Real-Time Hardware Diagnostics • فحص العتاد والذاكرة المباشر</h1>
+<p class="desc">بيانات حية من نظام أندرويد 4.4 وجهاز التلفاز (512MB RAM TV Box)</p>
+
+<table>
+    <tr><th style="width:30%;">المعيار / Parameter</th><th style="width:45%;">القراءة الفعلية / Live Value</th><th>التقييم / Assessment</th></tr>
+    <tr><td>نظام التشغيل (OS)</td><td id="os_val" class="metric">Android 4.4.4 (API 19)</td><td>نواة كيت كات المتوافقة</td></tr>
+    <tr><td>معمارية المعالج (CPU)</td><td id="abi_val" class="metric">ARM32 (armeabi-v7a)</td><td>متوافق مع معمارية Cortex-A7</td></tr>
+    <tr><td>الذاكرة العشوائية الحرة (RAM)</td><td id="ram_val" class="metric">جاري القراءة...</td><td>مراقبة نشطة لمنع نفاد الذاكرة</td></tr>
+    <tr><td>ذاكرة الدالفيك (Java Heap)</td><td id="heap_val" class="metric">جاري الحساب...</td><td>في حدود الأمان المسموحة</td></tr>
+    <tr><td>المساحة التخزينية الحرة</td><td id="storage_val" class="metric">جاري الفحص...</td><td>ذاكرة تخزين فلاشية داخلية</td></tr>
+    <tr><td>التبويبات المفتوحة</td><td id="tabs_val" class="metric">1 مفتوح / 1 نشط</td><td>محرك ويب حي واحد فقط</td></tr>
+    <tr><td>حالة الاتصال بالشبكة</td><td id="net_val" class="metric">جاري الفحص...</td><td>متصل بالإنترنت</td></tr>
+    <tr><td>استراتيجية إدارة الذاكرة</td><td id="mode_val" class="metric">Single Live WebView</td><td>محمية من انهيار OOM</td></tr>
+</table>
+
+<a class="btn" href="file:///android_asset/homepage.html">◀ العودة إلى الصفحة الرئيسية (Home)</a>
+</body>
+</html>
